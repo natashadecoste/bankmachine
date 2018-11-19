@@ -1,18 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types"
+import "./component-styles.scss"
 
 export class Summary extends React.Component {
-    // promptUser = () => {
-    //     var r = window.confirm("Are you sure you want to Exit? This will end your current banking session") 
-    //     if (r === true) {
-    //         console.log("You pressed OK!");
-    //         // navigate back to index.js
-    //         window.location.href = "/";
-    //     } else {
-    //         console.log("You pressed CANCEL, resuming window session..");
-    //         // do nothing
-    //     }
-    // }
     render(){
         return (
             <div className="section-container">

@@ -1,4 +1,5 @@
 import React from "react";
+import "./component-styles.scss"
 
 export class Exit extends React.Component {
     promptUser = () => {
