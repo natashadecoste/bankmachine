@@ -4,7 +4,7 @@
 Small static frontend application running with Gatsby.js, ReactJS, HTML, (S)CSS.
 Implemented to research User Interface implementations and learn frontend technologies.
 
-##Using this project:
+## Using this project:
 
 ### Get Gatsby Cli
 
@@ -22,7 +22,7 @@ Navigate to http://localhost:8000
 
 #### Collaboration
 
-Chaoyi Kuang
-Natasha DeCoste 
-Nicholas Di Genova
-Owen Mitchell
+- Chaoyi Kuang
+- Natasha DeCoste 
+- Nicholas Di Genova
+- Owen Mitchell

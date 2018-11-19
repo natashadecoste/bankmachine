@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import "./layouts.scss";
 
 export class Page extends React.Component {
     render(){

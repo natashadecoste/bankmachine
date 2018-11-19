@@ -11,7 +11,9 @@
   "dependencies": {
     "gatsby": "^2.0.33",
     "gatsby-link": "^2.0.6",
+    "gatsby-plugin-sass": "^2.0.4",
     "gatsby-react-router-scroll": "^2.0.1",
+    "node-sass": "^4.10.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1"
   }
