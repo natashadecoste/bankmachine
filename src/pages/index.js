@@ -1,4 +1,8 @@
 import React from "react"
 import {Page} from "../layouts/page"
+import {Login} from "./../component/login"
 
-export default () => <Page>hello World 2.0</Page>
+export default () => 
+<Page>
+    <Login />
+</Page>
