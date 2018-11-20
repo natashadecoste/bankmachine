@@ -9,6 +9,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "@material-ui/core": "^3.5.1",
     "gatsby": "^2.0.33",
     "gatsby-link": "^2.0.6",
     "gatsby-plugin-react-helmet": "^3.0.2",
