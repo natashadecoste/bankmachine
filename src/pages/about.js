@@ -1,8 +1,34 @@
 import React from "react";
-import { Page } from "./../layouts/page";
 import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
 import Helmet from 'react-helmet';
-import "./sidebar.scss";
+import "./layouts.scss";
+
+import { createMuiTheme } from '@material-ui/core/styles/createMuiTheme';
+
+//import createMuiTheme from 'material-ui/styles/createMuiTheme'
+
+// export default createMuiTheme({
+//   palette: {
+//     primary: purple,
+//     secondary: green,
+//     error: red,
+//   },
+// })
+
+
+// const theme = createMuiTheme({
+//     palette: {
+//         primary: {
+//             main: '#bbdefb',
+//         },
+//         secondary: {
+//             main: '#0d47a1',
+//         },
+//     },
+//     typography: {
+//         useNextVariants: true,
+//     },
+//   });
 
 var information = [
   {

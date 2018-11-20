@@ -1,6 +1,34 @@
 import React from "react";
-import { Summary, Deposit, Transfer } from "./../component/";
-import { Page } from "../layouts/page";
+import { Summary, Deposit, Transfer, Withdraw } from "./../component/";
+import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Helmet from 'react-helmet';
+import "./layouts.scss";
+
+
+const drawerWidth = 240;
+const styles = theme => ({
+  root: {
+    display: 'flex',
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+    marginTop: 50,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3,
+  }
+});
+
+const pages = ["deposit", "withdraw","transfer", "summary"];
 
 
 export default class Session extends React.Component {
@@ -12,50 +40,69 @@ export default class Session extends React.Component {
     super(props);
     this.state = { currentPage: "transfer" };
 
-    
-//   document.addEventListener('DOMContentLoaded', function() {
-//     var elems = document.querySelectorAll('.sidenav');
-//     var instances = Material.Sidenav.init(elems, options);
-//   });
+  }
 
-  // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
-  // var collapsibleElem = document.querySelector('.collapsible');
-  // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+  updatePage = pagename => {
+    var x = pagename.target.textContent;
+    this.setState({
+      currentPage: x
+    });
 
-  // Or with jQuery
-
-//   $(document).ready(function(){
-//     $('.sidenav').sidenav();
-//   });
-        
   }
 
   render() {
     return (
-      <Page>
-        This will hold all the values for the session
-        <br />
-        <nav> nothing </nav>
+      <div className="page-layout">
+      <CssBaseline />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>About PARKr</title>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+        />
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+        />
+      </Helmet>
+      <AppBar className="top-bar" position="fixed" style={styles.appBar}> Logo </AppBar>
+      <Drawer
+        style={styles.drawer}
+        variant="permanent"
+        anchor="left"
+        classes={{paper: styles.drawerPaper}}>
+                <div className="headspace" />
+                <Divider />
+                <List>
+                  {pages.map((item, index) => (
+                        <ListItem
+                          key={`menu--${index}`}
+                          onClick={this.updatePage}
+                        >
+                        <ListItemText primary={item}/>
+                        </ListItem>
+                      ))}
 
-<ul id="slide-out" class="sidenav-fixed">
-  <li><i class="material-icons">Deposit</i>First Link With Icon</li>
-  <li>Second Link</li>
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Subheader</a></li>
-  <li>Third Link With Waves</li>
-</ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                </List>
+        </Drawer>
+        <main style={styles.content} className="content">
+                 {this.state.currentPage === ("summary" ) && (
+                    <Summary accounts={this.accounts} />
+                  )}
+                  {this.state.currentPage === "deposit" && (
+                    <Deposit accounts={this.accounts} />
+                  )}
+                  {this.state.currentPage === "transfer" && (
+                    <Transfer accounts={this.accounts} />
+                  )}
+                  {this.state.currentPage === "withdraw" && (
+                    <Withdraw accounts={this.accounts} />
+                  )}
+        </main>
+        </div>
     
-        {/* {this.state.currentPage === ("summary" || null) && (
-          <Summary accounts={this.accounts} />
-        )}
-        {this.state.currentPage === "deposit" && (
-          <Deposit accounts={this.accounts} />
-        )}
-        {this.state.currentPage === "transfer" && (
-          <Transfer accounts={this.accounts} />
-        )} */}
-      </Page>
+      
     );
   }
 }
