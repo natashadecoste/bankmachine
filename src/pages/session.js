@@ -1,8 +1,7 @@
 import React from "react";
-
 import { Summary, Deposit, Transfer } from "./../component/";
 import { Page } from "../layouts/page";
-//import Material from "material";
+
 
 export default class Session extends React.Component {
   account1 = { balance: 400, name: "Chequeing" };

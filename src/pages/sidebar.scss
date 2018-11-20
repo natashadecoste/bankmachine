@@ -1,4 +1,14 @@
-.sidenav {
-    width: 35%;
-    background-color: azure;
+.headspace {
+    height: 50px;
+}
+
+main.content {
+    padding-top: 90px;
+    padding-left: 160px;
+    padding-right: 10px;
+    width: calc(100vw - 170px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    min-height: calc(100vh - 90px);
+
 }
