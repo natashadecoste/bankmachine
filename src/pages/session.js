@@ -1,5 +1,6 @@
 import React from "react";
 import { Summary, Deposit, Transfer, Withdraw } from "./../component/";
+import {SummaryIcon, DepositIcon, TransferIcon, WithdrawIcon} from "./../icons/menuicons"
 import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Helmet from 'react-helmet';
@@ -87,6 +88,10 @@ export default class Session extends React.Component {
                           key={`menu--${index}`}
                           onClick={this.updatePage}
                         >
+                        {item === "deposit" && <DepositIcon/>}
+                        {item === "summary" && <SummaryIcon/>}
+                        {item === "transfer" && <TransferIcon/>}
+                        {item === "withdraw" && <WithdrawIcon/>}
                         <ListItemText primary={item}/>
                         </ListItem>
                       ))}
