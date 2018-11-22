@@ -7,7 +7,7 @@ import Helmet from 'react-helmet';
 import "./layouts.scss";
 
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 const styles = theme => ({
   root: {
     display: 'flex',

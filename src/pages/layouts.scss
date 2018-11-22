@@ -9,7 +9,6 @@
     .side-bar-item {
         cursor: pointer;
         border-right: 2px solid transparent;
-        border: 1px solid lightgray;
         &:hover{
             text-decoration: underline;
             background-color: rgba(0,0,0,0.1);
@@ -23,12 +22,9 @@
 }
 
 main.content {
-    padding-top: 90px;
-    padding-left: 160px;
-    padding-right: 10px;
-    width: calc(100vw - 170px);
-    overflow-x: hidden;
-    overflow-y: scroll;
+    margin-left: 200px;
+    padding: 90px 10px;
+    width: calc(100vw - 200px);
     min-height: calc(100vh - 90px);
 
 }
