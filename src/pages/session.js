@@ -38,8 +38,14 @@ export default class Session extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { currentPage: "transfer" };
+    this.state = { currentPage: "withdraw" };
 
+  }
+
+  widthdrawAmount = (amount, account) => {
+    // taking away the amount from an account
+    console.log(amount);
+    console.log(account);
   }
 
   updatePage = pagename => {
