@@ -22,7 +22,7 @@ Navigate to http://localhost:8000
 
 #### Collaboration
 
-- Chaoyi Kuang
+- Troy (Chaoyi) Kuang
 - Natasha DeCoste 
 - Nicholas Di Genova
 - Owen Mitchell
