@@ -56,7 +56,7 @@ export default class Session extends React.Component {
       <CssBaseline />
       <Helmet>
         <meta charSet="utf-8" />
-        <title>About PARKr</title>
+        <title>PARKr Session</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
@@ -77,6 +77,7 @@ export default class Session extends React.Component {
                 <List>
                   {pages.map((item, index) => (
                         <ListItem
+                          className="side-bar-item"
                           key={`menu--${index}`}
                           onClick={this.updatePage}
                         >

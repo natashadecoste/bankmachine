@@ -6,6 +6,16 @@
         width: 100%;
         z-index: 9999;
     }
+    .side-bar-item {
+        cursor: pointer;
+        border-right: 2px solid transparent;
+        border: 1px solid lightgray;
+        &:hover{
+            text-decoration: underline;
+            background-color: rgba(0,0,0,0.1);
+            border-right: 2px solid darkgray;
+        }
+    }
 }
 
 .headspace {
