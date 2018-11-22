@@ -3,25 +3,33 @@
     width: auto;
     height: 100%;
     .dropdown-field {
+        position: relative;
         .dropdown-button {
             cursor: pointer;
             padding: 5px;
-                &::after{
-                    content: "\/"; //replace with glyphicon
+                svg.chevron {
+                    fill: white;
+                    transform: rotate(90deg);
+                    height: 1em;
+                    width: auto;
+                    margin: auto 5px;
                 }
         }
-        ul.dropdown-list {
-            display: none;
-        }
         &.open {
-            ul.dropdown-list {
-                display: block;
-            }
-            .dropdown-button::after{
-                content: "^" //replace with glyphicon
+            .dropdown-button{
+                svg.chevron {
+                    transform: rotate(-90deg);
+                }
             }
 
         }
     }
     
+}
+
+ul.dropdown-list {
+    cursor: pointer;
+    li:hover {
+        text-decoration: underline;
+    }
 }

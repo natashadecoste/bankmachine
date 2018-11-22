@@ -1,9 +1,17 @@
 import React from "react";
 import "./component-styles.scss";
-import { ListItem, List, ListItemText, Button } from "@material-ui/core/";
+import {
+  ListItem,
+  List,
+  ListItemText,
+  Button,
+  Popover
+} from "@material-ui/core/";
 import cx from "classnames";
+import { Chevron } from "../icons/chevron";
 
 export class Dropdown extends React.Component {
+anchorEl;
   constructor(props) {
     super(props);
     var selectedItem = props.selected ? props.selected : props.list[0];
@@ -11,33 +19,30 @@ export class Dropdown extends React.Component {
       selected: selectedItem,
       openList: false
     };
-    
   }
 
-  clickHandler = (item) => {
+  clickHandler =  item => {
     if (this.props.select) {
-        // we want to select it within the dropdown AND within the PARENT component
-        this.props.select(item); // parent selection
-        this.setState({
-            selected: item
-        });
-        this.toggleList(false);
+      // we want to select it within the dropdown AND within the PARENT component
+      this.props.select(item); // parent selection
+      this.setState({
+        selected: item
+      });
+      this.toggleList(false);
     }
   };
 
   toggleList = (event, state) => {
-
-    if(state) {
-        this.setState({
-            openList: state
-          });
-    }
-    else {
-        var prevstate = this.state.openList;
-        this.setState({
-          openList: !prevstate
-        });
-
+    this.anchorEl = event.currentTarget;
+    if (state) {
+      this.setState({
+        openList: state
+      });
+    } else {
+      var prevstate = this.state.openList;
+      this.setState({
+        openList: !prevstate
+      });
     }
   };
 
@@ -52,18 +57,28 @@ export class Dropdown extends React.Component {
           onClick={this.toggleList}
         >
           {this.state.selected.name}
+          <Chevron direction="up" />
         </Button>
-        <List className="dropdown-list">
-          {this.props.list.map((item, index) => (
-            <ListItem
-              key={`item--${index}`}
-              className="dropdown-list-item"
-              onClick={() => this.clickHandler(item)}
-            >
-              <ListItemText primary={`${item.name}`} />
-            </ListItem>
-          ))}
-        </List>
+        <Popover open={this.state.openList}
+        anchorEl={this.anchorEl}
+        anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          
+          onClose={() => this.toggleList(false)}>
+          <List className="dropdown-list">
+            {this.props.list.map((item, index) => (
+              <ListItem
+                key={`item--${index}`}
+                className="dropdown-list-item"
+                onClick={() => this.clickHandler(item)}
+              >
+                <ListItemText primary={`${item.name}`} />
+              </ListItem>
+            ))}
+          </List>
+        </Popover>
       </div>
     );
   }
