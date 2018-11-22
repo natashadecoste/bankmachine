@@ -37,13 +37,9 @@ export class Deposit extends React.Component {
                 <div>How much money to deposit?
                 <input type="text" placeholder="e.g. 45.22 or 45" /><Dropdown select={this.selectCurrency} list={[{"name": "CAD"}, {"name": "USD"}, {"name": "EUR"}]}></Dropdown>
                 </div>
-                        
-                
-
             </div>
         );
     }
-
 }
 
 Deposit.propTypes = {
