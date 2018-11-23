@@ -1,5 +1,6 @@
 import React from "react";
 import { Login, BackgroundVideo, Keyboard } from "./../component/";
+import { Button } from '@material-ui/core/';
 import "./layouts.scss";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Helmet from "react-helmet";
@@ -42,10 +43,11 @@ export default () => (
       <h1>Welcome,</h1>
       <h2>log in to get started.</h2>
       <Login />
+      <Button href="/session" variant="contained" color="primary">done</Button>
     </div>
-    <div className="keyboard-wrapper">
+    {/* <div className="keyboard-wrapper">
       <Keyboard />
-    </div>
+    </div> */}
 
     
   </div>
