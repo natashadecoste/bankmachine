@@ -1,5 +1,5 @@
 import React from "react";
-import { Summary, Deposit, Transfer, Withdraw } from "./../component/";
+import { Summary, Deposit, Transfer, Withdraw, Exit } from "./../component/";
 import {SummaryIcon, DepositIcon, TransferIcon, WithdrawIcon} from "./../icons/menuicons"
 import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -73,7 +73,9 @@ export default class Session extends React.Component {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
         />
       </Helmet>
-      <AppBar className="top-bar" position="fixed" style={styles.appBar}> Logo </AppBar>
+      <AppBar className="top-bar" position="fixed" style={styles.appBar}>
+      <Exit id="exit"/>
+      </AppBar>
       <Drawer
         style={styles.drawer}
         variant="permanent"

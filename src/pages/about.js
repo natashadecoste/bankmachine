@@ -122,31 +122,7 @@ export default class About extends React.Component {
           <h1>{information[this.state.currentPage].title}</h1>
           <p>{information[this.state.currentPage].information}</p>
         </main>
-
-      {/* {this.props.children} */}
     </div>
     );
   }
 }
-
-
-
-
-
-// <div>
-// <ul id="slide-out" className="sidenav">
-//   {information.map((item, index) => (
-//     <li
-//       className="menu-item"
-//       onClick={this.updateInfo}
-//       key={`menu--${index}`}
-//     >
-//       {item.title}
-//     </li>
-//   ))}
-// </ul>
-// </div>
-// <div className="section-container">
-// <h1>{information[this.state.currentPage].title}</h1>
-// <p>{information[this.state.currentPage].information}</p>
-// </div>

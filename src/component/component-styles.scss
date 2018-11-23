@@ -33,3 +33,13 @@ ul.dropdown-list {
         text-decoration: underline;
     }
 }
+
+
+#exit.button-exit {
+    width: 50px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto 5px;
+}
