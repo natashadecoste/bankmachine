@@ -1,8 +1,7 @@
 import React from "react";
-import { Login, BackgroundVideo  } from "./../component/";
+import { Login, BackgroundVideo } from "./../component/";
 import "./layouts.scss";
-import src from './videos/splashvideo.mp4'
-
+import src from "./videos/splashvideo.mp4";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -22,12 +21,15 @@ const theme = createMuiTheme({
 
 export default () => (
   <div className="sign-in">
-    <h1>
-      Welcome,
-      <br />
-      <i>sign in to continue.</i>
-    </h1>
-    <Login />
-    <BackgroundVideo src={src} />
+  <BackgroundVideo src={src} />
+    
+    <div className="title-content">
+      <h1>Welcome,</h1>
+      <h2>log in to get started.</h2>
+      <Login />
+    </div>
+
+   
+    
   </div>
 );
