@@ -12,6 +12,7 @@ export class BackgroundVideo extends React.Component {
       document.getElementById(`vid-${this.counter}`).style.opacity = 0.3;
 
       document.getElementsByClassName("title-content")[0].style.opacity = 1;
+      document.getElementsByClassName("keyboard-wrapper")[0].style.opacity = 1;
 
       
     }, 300);

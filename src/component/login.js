@@ -3,6 +3,15 @@ import "./component-styles.scss";
 import { TextField } from "@material-ui/core/";
 
 export class Login extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      uservalue: "",
+      pwdvalue: ""
+    };
+  }
+
   validation = () => {};
   render() {
     return (
@@ -12,9 +21,10 @@ export class Login extends React.Component {
           fullWidth
           id="standard-required"
           label="Account Number"
-          defaultValue=""
+          
           margin="normal"
         />
+
         <TextField
           fullWidth
           required
@@ -23,6 +33,7 @@ export class Login extends React.Component {
           type="password"
           autoComplete="current-password"
           margin="normal"
+          
         />
       </div>
     );

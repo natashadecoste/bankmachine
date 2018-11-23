@@ -34,7 +34,9 @@ main.content {
 
 .sign-in {
     width: 100vw;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     .background-video {
         z-index: -5;
         video {
@@ -47,7 +49,7 @@ main.content {
         color: black;
         font-size: 50px;
         z-index: 5;
-        padding: 1.5em;
+        padding: 0.5em;
         h1, h2 {
             z-index: inherit;
             font-family: "Roboto", "Helvetica", "Arial", sans-serif;
