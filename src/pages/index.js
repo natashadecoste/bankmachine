@@ -43,7 +43,8 @@ export default () => (
       <h1>Welcome,</h1>
       <h2>log in to get started.</h2>
       <Login />
-      <Button href="/session" variant="contained" color="primary">done</Button>
+      <Button className="cta" href="/session" variant="contained" color="primary">Done
+      </Button>
     </div>
     {/* <div className="keyboard-wrapper">
       <Keyboard />
