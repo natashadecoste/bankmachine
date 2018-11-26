@@ -5,6 +5,7 @@ import "./layouts.scss";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Helmet from "react-helmet";
 import src from "./videos/splashvideo.mp4";
+import {AboutIcon} from "./../icons/menuicons"
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -27,7 +28,7 @@ export default () => (
     <CssBaseline />
     <Helmet>
       <meta charSet="utf-8" />
-      <title>PARKr Session</title>
+      <title>BANKr Session</title>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
@@ -46,6 +47,11 @@ export default () => (
       <Button className="cta" href="/session" variant="contained" color="primary">Done
       </Button>
     </div>
+
+    <div className="about-page">
+    <AboutIcon/>
+    </div>
+    
     {/* <div className="keyboard-wrapper">
       <Keyboard />
     </div> */}

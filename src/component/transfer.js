@@ -4,6 +4,7 @@ import "./component-styles.scss";
 import { Dropdown } from "./dropdown";
 
 export class Transfer extends React.Component {
+
   constructor(props) {
     super(props);
 

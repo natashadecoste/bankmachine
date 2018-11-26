@@ -21,7 +21,6 @@ export class Login extends React.Component {
           fullWidth
           id="standard-required"
           label="Account Number"
-          
           margin="normal"
         />
 
@@ -33,7 +32,6 @@ export class Login extends React.Component {
           type="password"
           autoComplete="current-password"
           margin="normal"
-          
         />
       </div>
     );

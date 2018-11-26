@@ -1,20 +1,8 @@
 import React from "react";
 import { Summary, Deposit, Transfer, Withdraw, Exit } from "./../component/";
-import {
-  SummaryIcon,
-  DepositIcon,
-  TransferIcon,
-  WithdrawIcon
-} from "./../icons/menuicons";
-import {
-  Drawer,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  AppBar
-} from "@material-ui/core/";
-import { Logo } from "./../icons/bankrlogo";
+import { SummaryIcon, DepositIcon, TransferIcon, WithdrawIcon, AboutIcon} from "./../icons/menuicons"
+import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
+import { Logo} from "./../icons/bankrlogo"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Helmet from "react-helmet";
 import "./layouts.scss";
@@ -93,46 +81,46 @@ export default class Session extends React.Component {
   render() {
     return (
       <div className="page-layout">
-        <CssBaseline />
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>PARKr Session</title>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-          />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-          />
-        </Helmet>
-        <AppBar className="top-bar" position="fixed" style={styles.appBar}>
-          <Logo />
-          <Exit id="exit" />
-        </AppBar>
-        <Drawer
-          style={styles.drawer}
-          variant="permanent"
-          anchor="left"
-          classes={{ paper: styles.drawerPaper }}
-        >
-          <div className="headspace" />
-          <Divider />
-          <List>
-            {pages.map((item, index) => (
-              <ListItem
-                className="side-bar-item"
-                key={`menu--${index}`}
-                onClick={this.updatePage}
-              >
-                {item === "deposit" && <DepositIcon />}
-                {item === "summary" && <SummaryIcon />}
-                {item === "transfer" && <TransferIcon />}
-                {item === "withdraw" && <WithdrawIcon />}
-                <ListItemText primary={item} />
-              </ListItem>
-            ))}
-          </List>
+      <CssBaseline />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>BANKr Session</title>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+        />
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+        />
+      </Helmet>
+      <AppBar className="top-bar" position="fixed" style={styles.appBar}><Logo/>
+      <Exit id="exit"/>
+      </AppBar>
+      <Drawer
+        style={styles.drawer}
+        variant="permanent"
+        anchor="left"
+        classes={{paper: styles.drawerPaper}}>
+                <div className="headspace" />
+                <Divider />
+                <List>
+                  {pages.map((item, index) => (
+                        <ListItem
+                          className="side-bar-item"
+                          key={`menu--${index}`}
+                          onClick={this.updatePage}
+                        >
+                        {item === "deposit" && <DepositIcon/>}
+                        {item === "summary" && <SummaryIcon/>}
+                        {item === "transfer" && <TransferIcon/>}
+                        {item === "withdraw" && <WithdrawIcon/>}
+                        <ListItemText primary={item}/>
+                        </ListItem>
+                      ))}
+
+                </List>
+
         </Drawer>
         <main style={styles.content} className="content">
           {this.state.currentPage === "summary" && (
@@ -151,7 +139,12 @@ export default class Session extends React.Component {
             />
           )}
         </main>
-      </div>
+
+        <div className="about-page">
+          <AboutIcon/>
+        </div>
+        </div>
+
     );
   }
 }
