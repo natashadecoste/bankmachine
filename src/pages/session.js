@@ -4,59 +4,79 @@ import { SummaryIcon, DepositIcon, TransferIcon, WithdrawIcon, AboutIcon} from "
 import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
 import { Logo} from "./../icons/bankrlogo"
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Helmet from 'react-helmet';
+import Helmet from "react-helmet";
 import "./layouts.scss";
-
 
 const drawerWidth = 250;
 const styles = theme => ({
   root: {
-    display: 'flex',
+    display: "flex"
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1,
+    zIndex: theme.zIndex.drawer + 1
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    marginTop: 50,
+    marginTop: 50
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: drawerWidth
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 3
   }
 });
 
-const pages = ["deposit", "withdraw","transfer", "summary"];
-
+const pages = ["deposit", "withdraw", "transfer", "summary"];
 
 export default class Session extends React.Component {
   account1 = { balance: 400, name: "Chequeing" };
   account2 = { balance: 150, name: "Savings" };
-  accounts = [this.account1, this.account2];
+  //accounts = [this.account1, this.account2];
 
   constructor(props) {
     super(props);
-    this.state = { currentPage: "withdraw" };
-
+    this.state = {
+      currentPage: "withdraw",
+      accounts: [this.account1, this.account2]
+    };
   }
 
-  widthdrawAmount = (amount, account) => {
+  widthdrawAmount = (account, amount) => {
     // taking away the amount from an account
-    console.log(amount);
-    console.log(account);
-  }
+    // console.log(account.name);
+    var tempaccounts = this.state.accounts;
+    var newBalance;
+    tempaccounts.forEach(accountItem => {
+      if (accountItem.name === account.name) {
+        accountItem.balance = Number(accountItem.balance) - Number(amount);
+        newBalance = accountItem.balance;
+      }
+    });
+
+    this.setState({
+      accounts: tempaccounts
+    })
+    var txt = `Success. Your new balance for ${account.name} is ${newBalance}. Do you want to view your account(s) summary?`; 
+    var r = window.confirm(txt);
+    if (r === true) {
+      this.setState({
+        currentPage: "summary"
+      })
+    } else {
+      document.getElementById("withdraw-amt").value ="";
+    }
+
+  };
 
   updatePage = pagename => {
     var x = pagename.target.textContent;
     this.setState({
       currentPage: x
     });
-
-  }
+  };
 
   render() {
     return (
@@ -100,27 +120,31 @@ export default class Session extends React.Component {
                       ))}
 
                 </List>
+
         </Drawer>
         <main style={styles.content} className="content">
-                 {this.state.currentPage === ("summary" ) && (
-                    <Summary accounts={this.accounts} />
-                  )}
-                  {this.state.currentPage === "deposit" && (
-                    <Deposit accounts={this.accounts} />
-                  )}
-                  {this.state.currentPage === "transfer" && (
-                    <Transfer accounts={this.accounts} />
-                  )}
-                  {this.state.currentPage === "withdraw" && (
-                    <Withdraw accounts={this.accounts} />
-                  )}
+          {this.state.currentPage === "summary" && (
+            <Summary accounts={this.state.accounts} />
+          )}
+          {this.state.currentPage === "deposit" && (
+            <Deposit accounts={this.state.accounts} />
+          )}
+          {this.state.currentPage === "transfer" && (
+            <Transfer accounts={this.state.accounts} />
+          )}
+          {this.state.currentPage === "withdraw" && (
+            <Withdraw
+              withdrawFunc={this.widthdrawAmount}
+              accounts={this.state.accounts}
+            />
+          )}
         </main>
+
         <div className="about-page">
           <AboutIcon/>
         </div>
         </div>
-    
-      
+
     );
   }
 }

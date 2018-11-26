@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import "./component-styles.scss";
-import {Dropdown} from './dropdown';
-import { MuiThemeProvider } from "@material-ui/core";
+import { Dropdown } from "./dropdown";
+import { MuiThemeProvider, Button, TextField } from "@material-ui/core";
 
 export class Withdraw extends React.Component {
   constructor(props) {
@@ -15,32 +15,89 @@ export class Withdraw extends React.Component {
     };
   }
 
-  selectItem = (item) => {
-      this.setState({
-          selectedAccount: item
-      });
+  handleClick = () => {
+    var amt = document.getElementById("withdraw-amt").value;
+    if (this.checkAmount(amt)) {
+      var txt = `Are you sure you want to withdraw ${amt} from your current balance of  ${this.state.selectedAccount.balance} in your ${
+        this.state.selectedAccount.name
+      } account?`;
+      var r = window.confirm(txt);
+      if (r === true) {
+        this.props.withdrawFunc(this.state.selectedAccount, amt);
+      } else {
+        
+      }
+    }
+    
+  };
 
-  }
+  checkAmount = amt => {
+    if (amt <= 0) {
+      alert("Sorry, you can only withdraw a positive number greater than 0!");
+      return false;
+    } else if (isNaN(amt)) {
+      alert("Sorry, you need to use a number!");
+      return false;
+    } else if (amt > this.state.selectedAccount.balance) {
+      alert(
+        "Oops! Looks like you are trying to withdraw more money than you have... That's embarassing"
+      );
+      return false;
+    } else {
+      return true;
+    }
+  };
 
-  selectCurrency = (currency) => {
+  selectItem = item => {
     this.setState({
-        selectedCurrency: currency.name
+      selectedAccount: item
     });
-  }
+  };
+
+  selectCurrency = currency => {
+    this.setState({
+      selectedCurrency: currency.name
+    });
+  };
 
   render() {
     return (
       <div className="section-container widthdraw">
         <h1>Account Withdraw:</h1>
-
-        <Dropdown label="Select Account:" select={this.selectItem} selected={this.state.selectedAccount} list={this.props.accounts}></Dropdown>
-        <input type="text" placeholder="e.g. 45.22 or 45" /><Dropdown select={this.selectCurrency} list={[{"name": "CAD"}, {"name": "USD"}, {"name": "EUR"}]}></Dropdown>
-
+        <div className="input-group">
+          <Dropdown
+            label="Select Account:"
+            select={this.selectItem}
+            selected={this.state.selectedAccount}
+            list={this.props.accounts}
+          />
+        </div>
+        <div className="input-group">
+          <TextField
+            required
+            id="withdraw-amt"
+            label="Amount to Withdraw"
+            margin="normal"
+          />
+          <Dropdown
+            select={this.selectCurrency}
+            list={[{ name: "CAD" }, { name: "USD" }, { name: "EUR" }]}
+          />
+        </div>
+        <Button
+          variant="contained"
+          size="large"
+          color="secondary"
+          onClick={this.handleClick}
+        >
+          Withdraw Money
+        </Button>
       </div>
     );
   }
 }
 
 Withdraw.propTypes = {
-  accounts: PropTypes.array
+  accounts: PropTypes.array,
+  withdrawFunc: PropTypes.func
 };
