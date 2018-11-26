@@ -88,7 +88,7 @@ export default class About extends React.Component {
       <div className="page-layout">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>About PARKr</title>
+        <title>About BANKr</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"

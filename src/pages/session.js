@@ -64,7 +64,7 @@ export default class Session extends React.Component {
       <CssBaseline />
       <Helmet>
         <meta charSet="utf-8" />
-        <title>PARKr Session</title>
+        <title>BANKr Session</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
