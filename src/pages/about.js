@@ -1,5 +1,6 @@
 import React from "react";
 import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
+import { AboutIcon, OverviewIcon} from "./../icons/menuicons"
 import { Exit } from "./../component/";
 import { Logo} from "./../icons/bankrlogo"
 import Helmet from 'react-helmet';
@@ -35,12 +36,12 @@ import { createMuiTheme } from '@material-ui/core/styles/createMuiTheme';
 
 var information = [
   {
-    title: "Overview",
+    title: "overview",
     information:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nibh, hendrerit in dolor in, porta volutpat ligula. Morbi est augue, bibendum non neque ac, pretium eleifend sapien. Vestibulum nec nunc et neque venenatis dignissim in in mauris. Integer eget justo efficitur, tempus risus vitae, pretium metus. Vivamus vitae laoreet massa. Duis tellus lacus, dictum id laoreet quis, tristique at diam. Pellentesque faucibus ante a enim aliquam convallis. Donec nec purus tortor. Quisque ligula sem, dapibus semper malesuada at, aliquam ut eros. Quisque egestas mauris id porttitor sodales. Suspendisse fermentum lobortis finibus. Nullam ullamcorper, arcu at accumsan ultricies, eros tellus lacinia libero, eget tristique purus ligula in urna. Curabitur id lectus a sem fringilla mollis. Donec euismod eros ipsum, eget commodo velit maximus sit amet. Fusce malesuada condimentum enim, a ullamcorper ligula mollis sed."
   },
   {
-    title: "About",
+    title: "about",
     information:
       "Mauris vitae dui sed augue consectetur porttitor at sed nulla. Donec luctus vel quam at sodales. Donec dignissim risus pharetra nisi interdum auctor. Morbi non condimentum quam, faucibus lacinia ante. Phasellus arcu mi, ullamcorper non felis sit amet, sollicitudin vehicula risus. Fusce eu lacus tempor, placerat felis ut, condimentum orci. Donec malesuada sapien at justo fringilla, eget commodo risus lacinia. Suspendisse potenti. Nullam aliquet elementum elit, id tincidunt nulla sollicitudin eu."
   }
@@ -117,6 +118,8 @@ export default class About extends React.Component {
                           key={`menu--${index}`}
                           onClick={this.updateInfo}
                         >
+                        {item.title === "about" && <AboutIcon/>}
+                        {item.title === "overview" && <OverviewIcon/>}
                         <ListItemText primary={item.title}/>
                         </ListItem>
                       ))}
