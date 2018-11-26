@@ -71,12 +71,14 @@ export default class Session extends React.Component {
     this.setState({
       accounts: tempaccounts
     })
-    var txt = `Sweet! Now your new balance for ${account.name} is ${newBalance}. Do you want to view your account summary?`; 
+    var txt = `Success. Your new balance for ${account.name} is ${newBalance}. Do you want to view your account(s) summary?`; 
     var r = window.confirm(txt);
     if (r === true) {
-      console.log("You pressed OK!");
+      this.setState({
+        currentPage: "summary"
+      })
     } else {
-      console.log("You pressed Cancel!");
+      document.getElementById("withdraw-amt").value ="";
     }
 
   };

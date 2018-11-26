@@ -16,15 +16,22 @@ export class Withdraw extends React.Component {
   }
 
   handleClick = () => {
-    
     var amt = document.getElementById("withdraw-amt").value;
     if (this.checkAmount(amt)) {
-      console.log('amt is fine');
-      this.props.withdrawFunc(this.state.selectedAccount, amt);
+      var txt = `Are you sure you want to withdraw ${amt} from your current balance of  ${this.state.selectedAccount.balance} in your ${
+        this.state.selectedAccount.name
+      } account?`;
+      var r = window.confirm(txt);
+      if (r === true) {
+        this.props.withdrawFunc(this.state.selectedAccount, amt);
+      } else {
+        
+      }
     }
+    
   };
 
-  checkAmount = (amt) => {
+  checkAmount = amt => {
     if (amt <= 0) {
       alert("Sorry, you can only withdraw a positive number greater than 0!");
       return false;
@@ -36,8 +43,7 @@ export class Withdraw extends React.Component {
         "Oops! Looks like you are trying to withdraw more money than you have... That's embarassing"
       );
       return false;
-    }
-    else {
+    } else {
       return true;
     }
   };
