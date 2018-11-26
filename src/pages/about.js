@@ -1,6 +1,9 @@
 import React from "react";
 import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
+import { Exit } from "./../component/";
+import { Logo} from "./../icons/bankrlogo"
 import Helmet from 'react-helmet';
+import CssBaseline from "@material-ui/core/CssBaseline";
 import "./layouts.scss";
 
 import { createMuiTheme } from '@material-ui/core/styles/createMuiTheme';
@@ -98,7 +101,9 @@ export default class About extends React.Component {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
         />
       </Helmet>
-      <AppBar className="top-bar" position="fixed" style={styles.appBar}> Logo </AppBar>
+      <AppBar className="top-bar" position="fixed" style={styles.appBar}><Logo/>
+      <Exit id="exit"/>
+      </AppBar>
       <Drawer
         style={styles.drawer}
         variant="permanent"

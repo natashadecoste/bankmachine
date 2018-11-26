@@ -92,7 +92,6 @@ export default class Session extends React.Component {
                           onClick={this.updatePage}
                         >
                         {item === "deposit" && <DepositIcon/>}
-                        {/* {item === "deposit" && <Logo/>} */}
                         {item === "summary" && <SummaryIcon/>}
                         {item === "transfer" && <TransferIcon/>}
                         {item === "withdraw" && <WithdrawIcon/>}

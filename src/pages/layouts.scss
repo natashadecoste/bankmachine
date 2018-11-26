@@ -52,6 +52,14 @@ main.content {
             transition: opacity 3s linear 2s;
         }
     }
+    .about-page{
+        fill: black;
+        width: 30px;
+        height: auto;
+        position: absolute;
+        right: 15px;
+        bottom: 10px;
+    }
     .title-content {
         opacity: 0;
         transition: opacity 3s linear 2s;

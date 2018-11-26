@@ -17,7 +17,6 @@ export class Transfer extends React.Component {
           this.setState({
               selectedAccount: item
           });
-    
       }
     
       selectCurrency = (currency) => {
