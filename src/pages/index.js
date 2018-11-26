@@ -1,11 +1,11 @@
 import React from "react";
 import { Login, BackgroundVideo, Keyboard } from "./../component/";
-import { Button } from '@material-ui/core/';
+import { Button } from "@material-ui/core/";
 import "./layouts.scss";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Helmet from "react-helmet";
 import src from "./videos/splashvideo.mp4";
-import {AboutIcon} from "./../icons/menuicons"
+import { AboutIcon } from "./../icons/menuicons";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -44,18 +44,24 @@ export default () => (
       <h1>Welcome,</h1>
       <h2>log in to get started.</h2>
       <Login />
-      <Button className="cta" href="/session" variant="contained" color="primary">Done
+      <Button
+        className="cta"
+        href="/session"
+        variant="contained"
+        color="primary"
+      >
+        Done
       </Button>
-    </div>
-
-    <div className="about-page">
-    <AboutIcon/>
-    </div>
     
-    {/* <div className="keyboard-wrapper">
-      <Keyboard />
-    </div> */}
 
-    
+    <div
+      className="about-page"
+      onClick={() => {
+        window.open("/about", "_blank");
+      }}
+    >
+      <AboutIcon />
+    </div>
+    </div>
   </div>
 );

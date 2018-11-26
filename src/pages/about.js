@@ -1,12 +1,19 @@
 import React from "react";
-import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
+import {
+  Drawer,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  AppBar,
+  CssBaseline
+} from "@material-ui/core/";
 import { Exit } from "./../component/";
-import { Logo} from "./../icons/bankrlogo"
-import Helmet from 'react-helmet';
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { Logo } from "./../icons/bankrlogo";
+import Helmet from "react-helmet";
 import "./layouts.scss";
 
-import { createMuiTheme } from '@material-ui/core/styles/createMuiTheme';
+import { createMuiTheme } from "@material-ui/core/styles/createMuiTheme";
 
 //import createMuiTheme from 'material-ui/styles/createMuiTheme'
 
@@ -17,7 +24,6 @@ import { createMuiTheme } from '@material-ui/core/styles/createMuiTheme';
 //     error: red,
 //   },
 // })
-
 
 // const theme = createMuiTheme({
 //     palette: {
@@ -49,22 +55,22 @@ var information = [
 const drawerWidth = 250;
 const styles = theme => ({
   root: {
-    display: 'flex',
+    display: "flex"
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1,
+    zIndex: theme.zIndex.drawer + 1
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    marginTop: 50,
+    marginTop: 50
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: drawerWidth
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 3
   }
 });
 
@@ -89,45 +95,44 @@ export default class About extends React.Component {
   render() {
     return (
       <div className="page-layout">
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>About BANKr</title>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-        />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-        />
-      </Helmet>
-      <AppBar className="top-bar" position="fixed" style={styles.appBar}><Logo/>
-      <Exit id="exit"/>
-      </AppBar>
-      <Drawer
-        style={styles.drawer}
-        variant="permanent"
-        anchor="left"
-        classes={{paper: styles.drawerPaper}}>
-                <div className="headspace" />
-                <Divider />
-                <List>
-                  {information.map((item, index) => (
-                        <ListItem
-                          key={`menu--${index}`}
-                          onClick={this.updateInfo}
-                        >
-                        <ListItemText primary={item.title}/>
-                        </ListItem>
-                      ))}
-
-                </List>
+        <CssBaseline />
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>About BANKr</title>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+          />
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+          />
+        </Helmet>
+        <AppBar className="top-bar" position="fixed" style={styles.appBar}>
+          <Logo />
+          <Exit id="exit" />
+        </AppBar>
+        <Drawer
+          style={styles.drawer}
+          variant="permanent"
+          anchor="left"
+          classes={{ paper: styles.drawerPaper }}
+        >
+          <div className="headspace" />
+          <Divider />
+          <List>
+            {information.map((item, index) => (
+              <ListItem key={`menu--${index}`} onClick={this.updateInfo}>
+                <ListItemText primary={item.title} />
+              </ListItem>
+            ))}
+          </List>
         </Drawer>
         <main style={styles.content} className="content">
           <h1>{information[this.state.currentPage].title}</h1>
           <p>{information[this.state.currentPage].information}</p>
         </main>
-    </div>
+      </div>
     );
   }
 }
