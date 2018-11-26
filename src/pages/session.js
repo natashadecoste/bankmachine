@@ -1,6 +1,6 @@
 import React from "react";
 import { Summary, Deposit, Transfer, Withdraw, Exit } from "./../component/";
-import { SummaryIcon, DepositIcon, TransferIcon, WithdrawIcon} from "./../icons/menuicons"
+import { SummaryIcon, DepositIcon, TransferIcon, WithdrawIcon, AboutIcon} from "./../icons/menuicons"
 import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
 import { Logo} from "./../icons/bankrlogo"
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -115,6 +115,9 @@ export default class Session extends React.Component {
                     <Withdraw accounts={this.accounts} />
                   )}
         </main>
+        <div className="about-page">
+          <AboutIcon/>
+        </div>
         </div>
     
       
