@@ -1,13 +1,21 @@
 import React from "react";
-import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
+
 import { AboutIcon, OverviewIcon} from "./../icons/menuicons"
+import {
+  Drawer,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  AppBar,
+  CssBaseline
+} from "@material-ui/core/";
 import { Exit } from "./../component/";
-import { Logo} from "./../icons/bankrlogo"
-import Helmet from 'react-helmet';
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { Logo } from "./../icons/bankrlogo";
+import Helmet from "react-helmet";
 import "./layouts.scss";
 
-import { createMuiTheme } from '@material-ui/core/styles/createMuiTheme';
+import { createMuiTheme } from "@material-ui/core/styles/createMuiTheme";
 
 //import createMuiTheme from 'material-ui/styles/createMuiTheme'
 
@@ -18,7 +26,6 @@ import { createMuiTheme } from '@material-ui/core/styles/createMuiTheme';
 //     error: red,
 //   },
 // })
-
 
 // const theme = createMuiTheme({
 //     palette: {
@@ -50,22 +57,22 @@ var information = [
 const drawerWidth = 250;
 const styles = theme => ({
   root: {
-    display: 'flex',
+    display: "flex"
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1,
+    zIndex: theme.zIndex.drawer + 1
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    marginTop: 50,
+    marginTop: 50
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: drawerWidth
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 3
   }
 });
 
@@ -130,7 +137,7 @@ export default class About extends React.Component {
           <h1>{information[this.state.currentPage].title}</h1>
           <p>{information[this.state.currentPage].information}</p>
         </main>
-    </div>
+      </div>
     );
   }
 }
