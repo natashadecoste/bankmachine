@@ -11,7 +11,7 @@ import cx from "classnames";
 import { Chevron } from "../icons/chevron";
 
 export class Dropdown extends React.Component {
-anchorEl;
+  anchorEl;
   constructor(props) {
     super(props);
     var selectedItem = props.selected ? props.selected : props.list[0];
@@ -21,7 +21,7 @@ anchorEl;
     };
   }
 
-  clickHandler =  item => {
+  clickHandler = item => {
     if (this.props.select) {
       // we want to select it within the dropdown AND within the PARENT component
       this.props.select(item); // parent selection
@@ -57,16 +57,17 @@ anchorEl;
           onClick={this.toggleList}
         >
           {this.state.selected.name}
-          <Chevron direction="up" />
+          <Chevron />
         </Button>
-        <Popover open={this.state.openList}
-        anchorEl={this.anchorEl}
-        anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
+        <Popover
+          open={this.state.openList}
+          anchorEl={this.anchorEl}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left"
           }}
-          
-          onClose={() => this.toggleList(false)}>
+          onClose={() => this.toggleList(false)}
+        >
           <List className="dropdown-list">
             {this.props.list.map((item, index) => (
               <ListItem
@@ -74,7 +75,10 @@ anchorEl;
                 className="dropdown-list-item"
                 onClick={() => this.clickHandler(item)}
               >
-                <ListItemText primary={`${item.name}`} />
+                {item.balance && (
+                  <ListItemText primary={`${item.name} -- ${item.balance}`} />
+                )}
+                {!item.balance && <ListItemText primary={`${item.name}`} />}
               </ListItem>
             ))}
           </List>

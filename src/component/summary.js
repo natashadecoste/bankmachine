@@ -15,6 +15,7 @@ export class Summary extends React.Component {
     return (
       <div className="section-container">
         <h1>Account Summary</h1>
+        <p>Check all your accounts.</p>
 
         <div>
           <Table>
