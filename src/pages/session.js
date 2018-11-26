@@ -1,7 +1,8 @@
 import React from "react";
 import { Summary, Deposit, Transfer, Withdraw, Exit } from "./../component/";
-import {SummaryIcon, DepositIcon, TransferIcon, WithdrawIcon} from "./../icons/menuicons"
+import { SummaryIcon, DepositIcon, TransferIcon, WithdrawIcon} from "./../icons/menuicons"
 import { Drawer, Divider, List, ListItem, ListItemText, AppBar} from '@material-ui/core/';
+import { Logo} from "./../icons/bankrlogo"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Helmet from 'react-helmet';
 import "./layouts.scss";
@@ -73,7 +74,7 @@ export default class Session extends React.Component {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
         />
       </Helmet>
-      <AppBar className="top-bar" position="fixed" style={styles.appBar}>
+      <AppBar className="top-bar" position="fixed" style={styles.appBar}><Logo/>
       <Exit id="exit"/>
       </AppBar>
       <Drawer
@@ -91,6 +92,7 @@ export default class Session extends React.Component {
                           onClick={this.updatePage}
                         >
                         {item === "deposit" && <DepositIcon/>}
+                        {/* {item === "deposit" && <Logo/>} */}
                         {item === "summary" && <SummaryIcon/>}
                         {item === "transfer" && <TransferIcon/>}
                         {item === "withdraw" && <WithdrawIcon/>}
