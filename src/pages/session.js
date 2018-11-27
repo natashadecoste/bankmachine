@@ -1,11 +1,12 @@
 import React from "react";
-import { Summary, Deposit, Transfer, Withdraw, Exit } from "./../component/";
+import { Summary, Deposit, Transfer, Withdraw, Exit, CurrencyExchange} from "./../component/";
 import {
   SummaryIcon,
   DepositIcon,
   TransferIcon,
   WithdrawIcon,
-  AboutIcon
+  AboutIcon,
+  CurrencyExchangeIcon
 } from "./../icons/menuicons";
 import {
   Drawer,
@@ -42,7 +43,7 @@ const styles = theme => ({
   }
 });
 
-const pages = ["summary", "deposit", "withdraw", "transfer"];
+const pages = ["summary", "deposit", "withdraw", "transfer", "currency exchange"];
 
 export default class Session extends React.Component {
   account1 = { balance: 400, name: "Chequeing" };
@@ -95,6 +96,8 @@ export default class Session extends React.Component {
         newBalance = accountItem.balance;
       }
     });
+
+
 
     this.setState({
       accounts: tempaccounts
@@ -158,6 +161,7 @@ export default class Session extends React.Component {
                 {item === "summary" && <SummaryIcon />}
                 {item === "transfer" && <TransferIcon />}
                 {item === "withdraw" && <WithdrawIcon />}
+                {item === "currency exchange" && <CurrencyExchangeIcon />}
                 <ListItemText primary={item} />
               </ListItem>
             ))}
@@ -181,6 +185,9 @@ export default class Session extends React.Component {
               withdrawFunc={this.widthdrawAmount}
               accounts={this.state.accounts}
             />
+          )}
+          {this.state.currentPage === "currency exchange" && (
+            <CurrencyExchange accounts={this.state.accounts} />
           )}
         </main>
 
