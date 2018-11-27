@@ -14,7 +14,8 @@ import {
   TransferIcon,
   WithdrawIcon,
   AboutIcon,
-  CurrencyExchangeIcon
+  CurrencyExchangeIcon,
+  LoanIcon
 } from "./../icons/menuicons";
 import {
   Drawer,
@@ -199,6 +200,7 @@ export default class Session extends React.Component {
                 {item === "transfer" && <TransferIcon />}
                 {item === "withdraw" && <WithdrawIcon />}
                 {item === "exchange" && <CurrencyExchangeIcon />}
+                {item === "loans" && <LoanIcon/>}
                 <ListItemText primary={item} />
               </ListItem>
             ))}
