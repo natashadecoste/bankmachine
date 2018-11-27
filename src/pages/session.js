@@ -186,7 +186,7 @@ export default class Session extends React.Component {
               accounts={this.state.accounts}
             />
           )}
-          {this.state.currentPage === "currency exchange" && (
+          {this.state.currentPage === "exchange" && (
             <CurrencyExchange accounts={this.state.accounts} />
           )}
         </main>
