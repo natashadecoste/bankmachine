@@ -98,12 +98,25 @@ export default class About extends React.Component {
       currentPage: 0
     };
   }
+
   updateInfo = stateChange => {
+    var x = stateChange.target;
+    var y;
+    if (x.nodeName === "path") {
+      y = x.parentElement;
+      y = y.getAttribute("data");
+    } else if (x.nodeName === "svg") {
+      y = x.getAttribute("data");
+    } else {
+      y = x.textContent;
+    }
+
+
     var index = information
       .map(function(info) {
         return info.page;
       })
-      .indexOf(stateChange.target.textContent);
+      .indexOf(y);
     this.setState({
       currentPage: index
     });

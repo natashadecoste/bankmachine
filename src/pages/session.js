@@ -163,30 +163,18 @@ export default class Session extends React.Component {
   updatePage = pagename => {
     var x = pagename.target;
     var y;
-    if(x.nodeName === "PATH"){
-      console.log('path');
-      y = x.parentElement.getAttribute("data");
-    }
-    else if (x.nodeName == "SVG"){
-      console.log('svg');
+    if (x.nodeName === "path") {
+      y = x.parentElement;
+      y = y.getAttribute("data");
+    } else if (x.nodeName === "svg") {
       y = x.getAttribute("data");
-      
-    }
-    else {
-      console.log("other");
+    } else {
       y = x.textContent;
-    }//.textContent;
-   
+    }
 
-    // if (x == "") {
-    //   x = pagename.target.getAttribute("data");
-    // }
-
-    console.log(x);
-    console.log(y);
-    // this.setState({
-    //   currentPage: x
-    // });
+    this.setState({
+      currentPage: y
+    });
   };
 
   render() {
@@ -229,7 +217,7 @@ export default class Session extends React.Component {
                 {item === "transfer" && <TransferIcon />}
                 {item === "withdraw" && <WithdrawIcon />}
                 {item === "exchange" && <CurrencyExchangeIcon />}
-                {item === "loans" && <LoanIcon/>}
+                {item === "loans" && <LoanIcon />}
                 <ListItemText primary={item} />
               </ListItem>
             ))}
