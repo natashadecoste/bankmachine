@@ -5,3 +5,4 @@ export * from "./withdraw";
 export * from "./exit";
 export * from "./login";
 export * from "./backgroundvideo";
+export * from "./currencyexchange";
