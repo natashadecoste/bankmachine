@@ -10,7 +10,8 @@ export class CurrencyExchange extends React.Component {
 
     this.state = {
       selectedAccount: props.accounts[0],
-      selectedCurrency: "CAD"
+      selectedCurrency: "CAD",
+      exchangeRate: 1
     };
   }
 
@@ -22,7 +23,8 @@ export class CurrencyExchange extends React.Component {
 
   selectCurrency = currency => {
     this.setState({
-      selectedCurrency: currency.name
+      selectedCurrency: currency.name,
+      exchangeRate: currency.rate
     });
   };
 
@@ -42,10 +44,10 @@ export class CurrencyExchange extends React.Component {
         What currency would you like to use?
         <Dropdown
           select={this.selectCurrency}
-          list={[{ name: "CAD" }, { name: "USD" }, { name: "EUR" }]}
+          list={[{ name: "CAD", rate: 1 }, { name: "USD", rate: 0.75 }, { name: "EUR", rate: 0.67 }]}
         />
 
-        <h1>The Value of your {this.state.selectedAccount.name} account in {this.state.selectedCurrency} is </h1>
+        <h1>The Value of your {this.state.selectedAccount.name} account in {this.state.selectedCurrency} is {this.state.exchangeRate * this.state.selectedAccount.balance} </h1>
       </div>
     );
   }
