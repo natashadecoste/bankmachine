@@ -97,6 +97,7 @@ export default class About extends React.Component {
   render() {
     return (
       <div className="page-layout">
+      <CssBaseline/>
       <Helmet>
         <meta charSet="utf-8" />
         <title>About BANKr</title>
@@ -122,6 +123,7 @@ export default class About extends React.Component {
                 <List>
                   {information.map((item, index) => (
                         <ListItem
+                          className="side-bar-item"
                           key={`menu--${index}`}
                           onClick={this.updateInfo}
                         >

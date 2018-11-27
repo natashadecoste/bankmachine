@@ -4,6 +4,7 @@ import cx from "classnames";
 import "./component-styles.scss";
 import { Dropdown } from "./dropdown";
 import { MuiThemeProvider, TextField, Button } from "@material-ui/core";
+import { Chevron } from "../icons/chevron";
 
 export class Deposit extends React.Component {
   constructor(props) {
@@ -85,8 +86,10 @@ export class Deposit extends React.Component {
           size="large"
           color="secondary"
           onClick={this.handleClick}
+          className="cta"
         >
           Deposit Money
+          <Chevron/>
         </Button>
       </div>
     );

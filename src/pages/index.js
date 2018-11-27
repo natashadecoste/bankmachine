@@ -45,7 +45,6 @@ export default () => (
       <h2>log in to get started.</h2>
       <Login />
       <Button
-        className="cta"
         href="/session"
         variant="contained"
         color="primary"

@@ -1,5 +1,12 @@
 import React from "react";
-import { Summary, Deposit, Transfer, Withdraw, Exit, CurrencyExchange} from "./../component/";
+import {
+  Summary,
+  Deposit,
+  Transfer,
+  Withdraw,
+  Exit,
+  CurrencyExchange
+} from "./../component/";
 import {
   SummaryIcon,
   DepositIcon,
@@ -53,10 +60,40 @@ export default class Session extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: "deposit",
+      currentPage: "transfer",
       accounts: [this.account1, this.account2]
     };
   }
+
+  transferAmt = (sender, payee, amt) => {
+    var tempaccounts = this.state.accounts;
+    tempaccounts.forEach(accountItem => {
+      if (accountItem.name === sender.name) {
+        //console.log('found sender');
+
+        accountItem.balance = Number(accountItem.balance) - Number(amt);
+        //newBalance = accountItem.balance;
+      }
+      if (accountItem.name === payee.name) {
+        accountItem.balance = Number(accountItem.balance) + Number(amt);
+        //console.log("found payee");
+      }
+    });
+
+    this.setState({
+      accounts: tempaccounts
+    });
+
+    var txt = `Success. Your transfer of ${amt} from ${sender.name} to ${payee.name} has gone through. Do you want to view your account(s) summary?`;
+    var r = window.confirm(txt);
+    if (r === true) {
+      this.setState({
+        currentPage: "summary"
+      });
+    } else {
+      document.getElementById("transfer-amt").value = "";
+    }
+  };
 
   depositAmount = (account, amount) => {
     // depositing the amount into account
@@ -83,8 +120,7 @@ export default class Session extends React.Component {
     } else {
       document.getElementById("deposit-amt").value = "";
     }
-
-  }
+  };
 
   widthdrawAmount = (account, amount) => {
     // taking away the amount from an account
@@ -96,8 +132,6 @@ export default class Session extends React.Component {
         newBalance = accountItem.balance;
       }
     });
-
-
 
     this.setState({
       accounts: tempaccounts
@@ -178,7 +212,10 @@ export default class Session extends React.Component {
             />
           )}
           {this.state.currentPage === "transfer" && (
-            <Transfer accounts={this.state.accounts} />
+            <Transfer
+              transferFunc={this.transferAmt}
+              accounts={this.state.accounts}
+            />
           )}
           {this.state.currentPage === "withdraw" && (
             <Withdraw

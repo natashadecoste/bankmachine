@@ -4,6 +4,7 @@ import cx from "classnames";
 import "./component-styles.scss";
 import { Dropdown } from "./dropdown";
 import { MuiThemeProvider, Button, TextField } from "@material-ui/core";
+import { Chevron } from "../icons/chevron";
 
 export class Withdraw extends React.Component {
   constructor(props) {
@@ -18,17 +19,15 @@ export class Withdraw extends React.Component {
   handleClick = () => {
     var amt = document.getElementById("withdraw-amt").value;
     if (this.checkAmount(amt)) {
-      var txt = `Are you sure you want to withdraw ${amt} from your current balance of  ${this.state.selectedAccount.balance} in your ${
-        this.state.selectedAccount.name
-      } account?`;
+      var txt = `Are you sure you want to withdraw ${amt} from your current balance of  ${
+        this.state.selectedAccount.balance
+      } in your ${this.state.selectedAccount.name} account?`;
       var r = window.confirm(txt);
       if (r === true) {
         this.props.withdrawFunc(this.state.selectedAccount, amt);
       } else {
-        
       }
     }
-    
   };
 
   checkAmount = amt => {
@@ -79,18 +78,17 @@ export class Withdraw extends React.Component {
             label="Amount to Withdraw"
             margin="normal"
           />
-          <Dropdown
-            select={this.selectCurrency}
-            list={[{ name: "CAD" }, { name: "USD" }, { name: "EUR" }]}
-          />
+          CAD
         </div>
         <Button
           variant="contained"
           size="large"
           color="secondary"
           onClick={this.handleClick}
+          className="cta"
         >
           Withdraw Money
+          <Chevron />
         </Button>
       </div>
     );
