@@ -5,7 +5,8 @@ import {
   Transfer,
   Withdraw,
   Exit,
-  CurrencyExchange
+  CurrencyExchange,
+  Loans
 } from "./../component/";
 import {
   SummaryIcon,
@@ -50,7 +51,7 @@ const styles = theme => ({
   }
 });
 
-const pages = ["summary", "deposit", "withdraw", "transfer", "exchange"];
+const pages = ["summary", "deposit", "withdraw", "transfer", "exchange", "loans"];
 
 export default class Session extends React.Component {
   account1 = { balance: 400, name: "Chequeing" };
@@ -84,7 +85,9 @@ export default class Session extends React.Component {
       accounts: tempaccounts
     });
 
-    var txt = `Success. Your transfer of ${amt} from ${sender.name} to ${payee.name} has gone through. Do you want to view your account(s) summary?`;
+    var txt = `Success. Your transfer of ${amt} from ${sender.name} to ${
+      payee.name
+    } has gone through. Do you want to view your account(s) summary?`;
     var r = window.confirm(txt);
     if (r === true) {
       this.setState({
@@ -225,6 +228,9 @@ export default class Session extends React.Component {
           )}
           {this.state.currentPage === "exchange" && (
             <CurrencyExchange accounts={this.state.accounts} />
+          )}
+          {this.state.currentPage === "loans" && (
+            <Loans />
           )}
         </main>
 

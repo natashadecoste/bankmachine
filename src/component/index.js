@@ -6,3 +6,4 @@ export * from "./exit";
 export * from "./login";
 export * from "./backgroundvideo";
 export * from "./currencyexchange";
+export * from "./loans";
