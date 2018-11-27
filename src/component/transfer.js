@@ -4,7 +4,6 @@ import "./component-styles.scss";
 import { Dropdown } from "./dropdown";
 
 export class Transfer extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -50,10 +49,7 @@ export class Transfer extends React.Component {
         </div>
         How much money to Transfer?
         <input type="text" placeholder="e.g. 45.22 or 45" />
-        <Dropdown
-          select={this.selectCurrency}
-          list={[{ name: "CAD" }, { name: "USD" }, { name: "EUR" }]}
-        />
+        CAD
       </div>
     );
   }

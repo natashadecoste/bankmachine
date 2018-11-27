@@ -43,7 +43,7 @@ const styles = theme => ({
   }
 });
 
-const pages = ["summary", "deposit", "withdraw", "transfer", "currency exchange"];
+const pages = ["summary", "deposit", "withdraw", "transfer", "exchange"];
 
 export default class Session extends React.Component {
   account1 = { balance: 400, name: "Chequeing" };
@@ -161,7 +161,7 @@ export default class Session extends React.Component {
                 {item === "summary" && <SummaryIcon />}
                 {item === "transfer" && <TransferIcon />}
                 {item === "withdraw" && <WithdrawIcon />}
-                {item === "currency exchange" && <CurrencyExchangeIcon />}
+                {item === "exchange" && <CurrencyExchangeIcon />}
                 <ListItemText primary={item} />
               </ListItem>
             ))}
