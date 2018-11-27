@@ -79,7 +79,13 @@ export class Transfer extends React.Component {
   render() {
     return (
       <div className="section-container">
-        <h1>Transfer from Account to Account</h1>
+        <h1>Transfer between Accounts</h1>
+        <p>
+          Bankr provides the easiest and fastest way to transfer your money
+          between accounts. Simply pick 2 accounts (one to transfer FROM, one to
+          transfer TO), decide on the amount and let Bankr take care of the
+          rest.
+        </p>
         <div className="input-group">
           Transfer from:
           <Dropdown

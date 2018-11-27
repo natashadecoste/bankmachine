@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AboutIcon, OverviewIcon} from "./../icons/menuicons"
+import { AboutIcon, OverviewIcon } from "./../icons/menuicons";
 import {
   Drawer,
   Divider,
@@ -14,6 +14,7 @@ import { Exit } from "./../component/";
 import { Logo } from "./../icons/bankrlogo";
 import Helmet from "react-helmet";
 import "./layouts.scss";
+import "./../component/component-styles.scss";
 
 import { createMuiTheme } from "@material-ui/core/styles/createMuiTheme";
 
@@ -40,19 +41,33 @@ import { createMuiTheme } from "@material-ui/core/styles/createMuiTheme";
 //         useNextVariants: true,
 //     },
 //   });
+var overview = (
+  <p>
+    Bankr is a web application that is built to replace your banker.
+    Convienience for all your banking needs should be a first priority. By automating appropriate banking experiences, you can do things on YOUR time and Bankr will do the heavy lifting for you. 
+  </p>
+);
+
+var about = (
+  <p>
+    Bankr makes it possible to do your everyday banking ANYTIME. 
+  </p>
+
+);
 
 var information = [
   {
-    title: "overview",
-    information:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nibh, hendrerit in dolor in, porta volutpat ligula. Morbi est augue, bibendum non neque ac, pretium eleifend sapien. Vestibulum nec nunc et neque venenatis dignissim in in mauris. Integer eget justo efficitur, tempus risus vitae, pretium metus. Vivamus vitae laoreet massa. Duis tellus lacus, dictum id laoreet quis, tristique at diam. Pellentesque faucibus ante a enim aliquam convallis. Donec nec purus tortor. Quisque ligula sem, dapibus semper malesuada at, aliquam ut eros. Quisque egestas mauris id porttitor sodales. Suspendisse fermentum lobortis finibus. Nullam ullamcorper, arcu at accumsan ultricies, eros tellus lacinia libero, eget tristique purus ligula in urna. Curabitur id lectus a sem fringilla mollis. Donec euismod eros ipsum, eget commodo velit maximus sit amet. Fusce malesuada condimentum enim, a ullamcorper ligula mollis sed."
+    title: "Meet Your New Bankr",
+    page: "overview",
+    information: overview
   },
   {
-    title: "about",
-    information:
-      "Mauris vitae dui sed augue consectetur porttitor at sed nulla. Donec luctus vel quam at sodales. Donec dignissim risus pharetra nisi interdum auctor. Morbi non condimentum quam, faucibus lacinia ante. Phasellus arcu mi, ullamcorper non felis sit amet, sollicitudin vehicula risus. Fusce eu lacus tempor, placerat felis ut, condimentum orci. Donec malesuada sapien at justo fringilla, eget commodo risus lacinia. Suspendisse potenti. Nullam aliquet elementum elit, id tincidunt nulla sollicitudin eu."
+    title: "What Can I Do With Bankr?",
+    page: "about",
+    information: about
   }
 ];
+
 
 const drawerWidth = 250;
 const styles = theme => ({
@@ -86,7 +101,7 @@ export default class About extends React.Component {
   updateInfo = stateChange => {
     var index = information
       .map(function(info) {
-        return info.title;
+        return info.page;
       })
       .indexOf(stateChange.target.textContent);
     this.setState({
@@ -96,44 +111,45 @@ export default class About extends React.Component {
 
   render() {
     return (
-      <div className="page-layout">
-      <CssBaseline/>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>About BANKr</title>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-        />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-        />
-      </Helmet>
-      <AppBar className="top-bar" position="fixed" style={styles.appBar}><Logo/>
-      <Exit id="exit"/>
-      </AppBar>
-      <Drawer
-        style={styles.drawer}
-        variant="permanent"
-        anchor="left"
-        classes={{paper: styles.drawerPaper}}>
-                <div className="headspace" />
-                <Divider />
-                <List>
-                  {information.map((item, index) => (
-                        <ListItem
-                          className="side-bar-item"
-                          key={`menu--${index}`}
-                          onClick={this.updateInfo}
-                        >
-                        {item.title === "about" && <AboutIcon/>}
-                        {item.title === "overview" && <OverviewIcon/>}
-                        <ListItemText primary={item.title}/>
-                        </ListItem>
-                      ))}
-
-                </List>
+      <div className="section-container page-layout">
+        <CssBaseline />
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>About BANKr</title>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+          />
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+          />
+        </Helmet>
+        <AppBar className="top-bar" position="fixed" style={styles.appBar}>
+          <Logo />
+          <Exit id="exit" />
+        </AppBar>
+        <Drawer
+          style={styles.drawer}
+          variant="permanent"
+          anchor="left"
+          classes={{ paper: styles.drawerPaper }}
+        >
+          <div className="headspace" />
+          <Divider />
+          <List>
+            {information.map((item, index) => (
+              <ListItem
+                className="side-bar-item"
+                key={`menu--${index}`}
+                onClick={this.updateInfo}
+              >
+                {item.page === "about" && <AboutIcon />}
+                {item.page === "overview" && <OverviewIcon />}
+                <ListItemText primary={item.page} />
+              </ListItem>
+            ))}
+          </List>
         </Drawer>
         <main style={styles.content} className="content">
           <h1>{information[this.state.currentPage].title}</h1>

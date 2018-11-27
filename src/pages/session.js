@@ -52,7 +52,14 @@ const styles = theme => ({
   }
 });
 
-const pages = ["summary", "deposit", "withdraw", "transfer", "exchange", "loans"];
+const pages = [
+  "summary",
+  "deposit",
+  "withdraw",
+  "transfer",
+  "exchange",
+  "loans"
+];
 
 export default class Session extends React.Component {
   account1 = { balance: 400, name: "Chequeing" };
@@ -154,10 +161,32 @@ export default class Session extends React.Component {
   };
 
   updatePage = pagename => {
-    var x = pagename.target.textContent;
-    this.setState({
-      currentPage: x
-    });
+    var x = pagename.target;
+    var y;
+    if(x.nodeName === "PATH"){
+      console.log('path');
+      y = x.parentElement.getAttribute("data");
+    }
+    else if (x.nodeName == "SVG"){
+      console.log('svg');
+      y = x.getAttribute("data");
+      
+    }
+    else {
+      console.log("other");
+      y = x.textContent;
+    }//.textContent;
+   
+
+    // if (x == "") {
+    //   x = pagename.target.getAttribute("data");
+    // }
+
+    console.log(x);
+    console.log(y);
+    // this.setState({
+    //   currentPage: x
+    // });
   };
 
   render() {
@@ -231,9 +260,7 @@ export default class Session extends React.Component {
           {this.state.currentPage === "exchange" && (
             <CurrencyExchange accounts={this.state.accounts} />
           )}
-          {this.state.currentPage === "loans" && (
-            <Loans />
-          )}
+          {this.state.currentPage === "loans" && <Loans />}
         </main>
 
         <div

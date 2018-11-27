@@ -1,10 +1,13 @@
 .menu-icon {
+    path {
+        pointer-events: null;
+    }
     fill: black;
     height: 2em;
     width: auto;
 }
 
-.bankr-logo{
+.bankr-logo {
     height: 100%;
     width: auto;
 }
