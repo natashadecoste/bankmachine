@@ -179,7 +179,7 @@ export default class Session extends React.Component {
 
   render() {
     return (
-      <div className="page-layout">
+      <div className="page-layout" id="sessionpage">
         <CssBaseline />
         <Helmet>
           <meta charSet="utf-8" />

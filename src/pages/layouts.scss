@@ -9,6 +9,7 @@
         height: 50px;
         width: 100%;
         z-index: 9999;
+        background-color: #5171A5;
 
         .bankr-logo{
             fill: rgba(148, 215, 160, 100);
@@ -102,4 +103,21 @@ p {
     font-size: 0.9em;
     margin: .5em 0;
 }
+#sessionpage, #aboutpage {
+    .cta {
+        background-color: #4FB562;
 
+        &:hover {
+            background-color:#3e934e;
+        }
+    }
+
+    .dropdown-button {
+        background-color: #6170BF;
+
+        &:hover {
+            background-color:#4454A9;
+        }
+    }
+    
+}
