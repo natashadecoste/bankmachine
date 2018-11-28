@@ -121,3 +121,21 @@ p {
     }
     
 }
+
+.features {
+    margin-top: 2em;
+    font-size: 14px;
+    line-height: 2em;
+    h2 {
+        font-weight: 500;
+        font-size: 18px;
+        margin-bottom: .5em;
+    }
+    li {
+        margin: 2em 0;
+        display: inline-flex;
+        svg {
+            margin-right: 1em;
+        }
+    }
+}

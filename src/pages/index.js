@@ -42,7 +42,7 @@ export default () => (
 
     <div className="title-content">
       <h1>Welcome,</h1>
-      <h2>log in to get started.</h2>
+      <h2>swipe your card or log in to get started.</h2>
       <Login />
       <Button
         href="/session"
