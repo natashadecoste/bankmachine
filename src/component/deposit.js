@@ -8,7 +8,8 @@ import {
   Button,
   Input,
   FormHelperText,
-  InputAdornment
+  InputAdornment,
+  Paper
 } from "@material-ui/core";
 import { Chevron } from "../icons/chevron";
 
@@ -60,38 +61,43 @@ export class Deposit extends React.Component {
     return (
       <div className="section-container deposit">
         <h1>Account Deposit</h1>
-        <div className="input-group">
-          <Dropdown
-            label="Select Account:"
-            select={this.selectItem}
-            selected={this.state.selectedAccount}
-            list={this.props.accounts}
-          />
-        </div>
-        <div className="input-group">
-          <Input
-            required
-            id="deposit-amt"
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            endAdornment={<InputAdornment position="end">CAD</InputAdornment>}
-            inputProps={{
-              "aria-label": "Deposit Amount"
-            }}
-          />
-          <FormHelperText id="weight-helper-text">
-            Deposit Amount
-          </FormHelperText>
-        </div>
-        <Button
-          variant="contained"
-          size="large"
-          color="secondary"
-          onClick={this.handleClick}
-          className="cta"
-        >
-          Deposit Money
-          <Chevron />
-        </Button>
+        <Paper className="bankr-paper">
+          <h2>New Deposit</h2>
+          <div className="input-group">
+            <Dropdown
+              label="Select Account:"
+              select={this.selectItem}
+              selected={this.state.selectedAccount}
+              list={this.props.accounts}
+            />
+          </div>
+          <div className="input-group">
+            <Input
+              required
+              id="deposit-amt"
+              startAdornment={
+                <InputAdornment position="start">$</InputAdornment>
+              }
+              endAdornment={<InputAdornment position="end">CAD</InputAdornment>}
+              inputProps={{
+                "aria-label": "Deposit Amount"
+              }}
+            />
+            <FormHelperText id="weight-helper-text">
+              Deposit Amount
+            </FormHelperText>
+          </div>
+          <Button
+            variant="contained"
+            size="large"
+            color="secondary"
+            onClick={this.handleClick}
+            className="cta"
+          >
+            Deposit Money
+            <Chevron />
+          </Button>
+        </Paper>
       </div>
     );
   }

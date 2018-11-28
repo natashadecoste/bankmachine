@@ -7,7 +7,8 @@ import {
   TableBody,
   TableCell,
   TableHead,
-  TableRow
+  TableRow,
+  Paper
 } from "@material-ui/core/";
 
 export class Summary extends React.Component {
@@ -15,17 +16,18 @@ export class Summary extends React.Component {
     return (
       <div className="section-container">
         <h1>Account Summary</h1>
-        <p>With Bankr, you can now check all your accounts in one place. Easy, convieniently and quickly.</p>
+        <p>
+          With Bankr, you can now check all your accounts in one place. Easy,
+          convieniently and quickly.
+        </p>
 
-        <div>
+        <Paper className="bankr-paper">
+          <h2>Your Accounts</h2>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell>Account Name</TableCell>
                 <TableCell numeric>Balance</TableCell>
-                {/* <TableCell numeric>Fat (g)</TableCell>
-                <TableCell numeric>Carbs (g)</TableCell>
-                <TableCell numeric>Protein (g)</TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -36,15 +38,12 @@ export class Summary extends React.Component {
                       {account.name}
                     </TableCell>
                     <TableCell numeric>{account.balance}</TableCell>
-                    {/* <TableCell numeric>{row.fat}</TableCell>
-                <TableCell numeric>{row.carbs}</TableCell>
-                <TableCell numeric>{row.protein}</TableCell> */}
                   </TableRow>
                 );
               })}
             </TableBody>
           </Table>
-        </div>
+        </Paper>
       </div>
     );
   }

@@ -69,7 +69,7 @@ export default class Session extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: "transfer",
+      currentPage: "exchange",
       accounts: [this.account1, this.account2]
     };
   }

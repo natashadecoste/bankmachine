@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import "./component-styles.scss";
 import { Dropdown } from "./dropdown";
-import { MuiThemeProvider, Button, Input, FormHelperText, InputAdornment } from "@material-ui/core";
+import {
+  MuiThemeProvider,
+  Button,
+  Input,
+  FormHelperText,
+  InputAdornment,
+  Paper
+} from "@material-ui/core";
 import { Chevron } from "../icons/chevron";
 
 export class Withdraw extends React.Component {
@@ -61,40 +68,43 @@ export class Withdraw extends React.Component {
 
   render() {
     return (
-      <div className="section-container widthdraw">
-        <h1>Account Withdraw:</h1>
-        <div className="input-group">
-          <Dropdown
-            label="Select Account:"
-            select={this.selectItem}
-            selected={this.state.selectedAccount}
-            list={this.props.accounts}
-          />
-        </div>
-        <div className="input-group">
-        <Input
-            required
-            id="withdraw-amt"
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            endAdornment={<InputAdornment position="end">CAD</InputAdornment>}
-            inputProps={{
-              "aria-label": "Withdraw Amount"
-            }}
-          />
-          <FormHelperText>
-            Withdraw Amount
-          </FormHelperText>
-        </div>
-        <Button
-          variant="contained"
-          size="large"
-          color="secondary"
-          onClick={this.handleClick}
-          className="cta"
-        >
-          Withdraw Money
-          <Chevron />
-        </Button>
+      <div className="section-container">
+        <h1>Withdraw Money from an Account</h1>
+        <Paper className="bankr-paper">
+          <h2>New Withdrawl</h2>
+          <div className="input-group">
+            <Dropdown
+              label="Select Account:"
+              select={this.selectItem}
+              selected={this.state.selectedAccount}
+              list={this.props.accounts}
+            />
+          </div>
+          <div className="input-group">
+            <Input
+              required
+              id="withdraw-amt"
+              startAdornment={
+                <InputAdornment position="start">$</InputAdornment>
+              }
+              endAdornment={<InputAdornment position="end">CAD</InputAdornment>}
+              inputProps={{
+                "aria-label": "Withdraw Amount"
+              }}
+            />
+            <FormHelperText>Withdraw Amount</FormHelperText>
+          </div>
+          <Button
+            variant="contained"
+            size="large"
+            color="secondary"
+            onClick={this.handleClick}
+            className="cta"
+          >
+            Withdraw Money
+            <Chevron />
+          </Button>
+        </Paper>
       </div>
     );
   }

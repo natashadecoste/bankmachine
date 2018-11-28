@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./component-styles.scss";
 import { Dropdown } from "./dropdown";
-
 import {
+  Paper,
   Table,
   TableBody,
   TableCell,
@@ -11,12 +11,17 @@ import {
   TableRow
 } from "@material-ui/core/";
 
+const exchangeRates = {
+  CAD: 1,
+  USD: 0.7,
+  EUR: 0.8
+};
+
 export class CurrencyExchange extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedAccount: props.accounts[0],
       selectedCurrency: "CAD",
       exchangeRate: 1,
       accounts: props.accounts
@@ -25,20 +30,18 @@ export class CurrencyExchange extends React.Component {
 
   createExchangeTable = exchangeRate => {
     var table = [];
-    this.state.accounts.forEach(function(account) {
+    this.state.accounts.forEach(function(account, index) {
       var row = [];
-      row.push(<TableCell>{account.name}</TableCell>);
-      row.push(<TableCell>{account.balance * exchangeRate}</TableCell>);
-      table.push(<TableRow>{row}</TableRow>);
+      row.push(<TableCell key={`cell-${index}`}>{account.name}</TableCell>);
+      row.push(
+        <TableCell key={`cell-${index + 1}`}>
+          {account.balance * exchangeRate}
+        </TableCell>
+      );
+      table.push(<TableRow key={`row-${index}`}>{row}</TableRow>);
     });
 
     return table;
-  };
-
-  selectItem = item => {
-    this.setState({
-      selectedAccount: item
-    });
   };
 
   selectCurrency = currency => {
@@ -51,7 +54,13 @@ export class CurrencyExchange extends React.Component {
   render() {
     return (
       <div className="section-container">
-        <h1>Compare Value of Your Accounts in Different Currencies</h1>
+        <h1>Global Exchange</h1>
+        <p>
+          Bankr now allows you to compare your account values to current
+          conversion rates. Please keep in mind this is a tool created to help
+          you visualize the value of your accounts at an international level and
+          Bankr is not converting your currency while using this tool.
+        </p>
 
         <div className="input-group">
           What currency would you like to use?
@@ -64,19 +73,23 @@ export class CurrencyExchange extends React.Component {
             ]}
           />
         </div>
-        <h1>Accounts:</h1>
+        <Paper className="bankr-paper">
+          <h2>Your Accounts</h2>
 
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Account</TableCell>
-              <TableCell>Balance in {this.state.selectedCurrency}</TableCell>
-            </TableRow>
-          </TableHead>
-          {this.createExchangeTable(this.state.exchangeRate)}
-        </Table>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Account</TableCell>
+                <TableCell>Balance in {this.state.selectedCurrency}</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.createExchangeTable(this.state.exchangeRate)}
+            </TableBody>
+          </Table>
+        </Paper>
 
-        <div className="footer">
+        <Paper className="bankr-paper footer">
           <svg x="0px" y="0px" viewBox="0 0 286.054 286.054">
             <path
               style={{ fill: "#E2574C" }}
@@ -87,7 +100,7 @@ export class CurrencyExchange extends React.Component {
             Psst! Bankr is constantly adding support for new currencies and
             features! Check back soon!
           </p>
-        </div>
+        </Paper>
       </div>
     );
   }

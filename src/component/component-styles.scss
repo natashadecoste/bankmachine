@@ -53,13 +53,13 @@ ul.dropdown-list {
 }
 
 .footer {
-    border: 1px solid black;
-    border-color: rgba(0,0,0,0.23);
+    &.bankr-paper {
+        margin-top: 0;
+    }
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     padding: 0.4em;
-    margin-top: 3em;
     svg {
         width: 1.2em;
         height: auto;
@@ -71,4 +71,16 @@ ul.dropdown-list {
         font-size: 70%;
         display: inline;
     }
+}
+
+.bankr-paper {
+    width: 100%;
+    h2 {
+        font-size: 1.2em;
+        margin-top: 1em;
+        margin-bottom: 2em;
+
+    }
+    margin: 2.4em 0;
+    padding: 1em;
 }

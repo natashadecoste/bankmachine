@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 import "./component-styles.scss";
 import { Dropdown } from "./dropdown";
 import { Chevron } from "./../icons/chevron";
-import { TextField, Button } from "@material-ui/core/";
+import {
+  Paper,
+  Button,
+  Input,
+  InputAdornment,
+  FormHelperText
+} from "@material-ui/core/";
+
 
 export class Transfer extends React.Component {
   constructor(props) {
@@ -86,48 +93,53 @@ export class Transfer extends React.Component {
           transfer TO), decide on the amount and let Bankr take care of the
           rest.
         </p>
-        <div className="input-group">
-          Transfer from:
-          <Dropdown
-            label="Select Account:"
-            select={item => {
-              this.selectItem(item, 1);
-            }}
-            selected={this.state.selectedAccount}
-            list={this.props.accounts}
-          />
-        </div>
-        <div className="input-group">
-          Transfer to:
-          <Dropdown
-            label="Select Account:"
-            select={item => {
-              this.selectItem(item, 2);
-            }}
-            selected={this.state.selectedAccount2}
-            list={this.props.accounts}
-          />
-        </div>
-        How much money to Transfer?
-        <div className="input-group">
-          <TextField
-            required
-            id="transfer-amt"
-            label="Amount to Transfer"
-            margin="normal"
-          />
-          CAD
-        </div>
-        <Button
-          variant="contained"
-          size="large"
-          color="secondary"
-          onClick={this.handleClick}
-          className="cta"
-        >
-          Transfer Money
-          <Chevron />
-        </Button>
+        <Paper className="bankr-paper">
+          <h2>New Account Transfer</h2>
+          <div className="input-group">
+            <Dropdown
+              label="Transfer from:"
+              select={item => {
+                this.selectItem(item, 1);
+              }}
+              selected={this.state.selectedAccount}
+              list={this.props.accounts}
+            />
+          </div>
+          <div className="input-group">
+            <Dropdown
+              label="Transfer to:"
+              select={item => {
+                this.selectItem(item, 2);
+              }}
+              selected={this.state.selectedAccount2}
+              list={this.props.accounts}
+            />
+          </div>
+          <div className="input-group">
+            <Input
+              required
+              id="transfer-amt"
+              startAdornment={
+                <InputAdornment position="start">$</InputAdornment>
+              }
+              endAdornment={<InputAdornment position="end">CAD</InputAdornment>}
+              inputProps={{
+                "aria-label": "Transfer Amount"
+              }}
+            />
+            <FormHelperText>Transfer Amount</FormHelperText>
+          </div>
+          <Button
+            variant="contained"
+            size="large"
+            color="secondary"
+            onClick={this.handleClick}
+            className="cta"
+          >
+            Transfer Money
+            <Chevron />
+          </Button>
+        </Paper>
       </div>
     );
   }
