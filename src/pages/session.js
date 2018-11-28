@@ -66,6 +66,7 @@ export default class Session extends React.Component {
   account1 = { balance: 400, name: "Chequeing" };
   account2 = { balance: 150, name: "Savings" };
   //accounts = [this.account1, this.account2];
+  counter = 0;
 
   constructor(props) {
     super(props);
@@ -73,7 +74,22 @@ export default class Session extends React.Component {
       currentPage: "summary",
       accounts: [this.account1, this.account2]
     };
+    
   }
+
+  componentDidMount = () => {
+    window.setTimeout(this.checkIfContinue,  2*60*1000); //10 minutes  = 10*60*1000
+
+  }
+
+  checkIfContinue = () => {
+    var text = "Warning: Session Timeout\nDo you want to continue?"
+    if (window.confirm(text)) {
+      window.setTimeout(this.checkIfContinue, 5*60*1000); //start the timer again
+    } else {
+      window.location = "/";
+    }
+  };
 
   transferAmt = (sender, payee, amt) => {
     var tempaccounts = this.state.accounts;
@@ -83,7 +99,6 @@ export default class Session extends React.Component {
       }
       if (accountItem.name === payee.name) {
         accountItem.balance = Number(accountItem.balance) + Number(amt);
-      
       }
     });
 
