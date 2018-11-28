@@ -1,4 +1,5 @@
 import React from "react";
+import cx from "classnames";
 import {
   Summary,
   Deposit,
@@ -208,7 +209,7 @@ export default class Session extends React.Component {
           <List>
             {pages.map((item, index) => (
               <ListItem
-                className="side-bar-item"
+                className={cx("side-bar-item", {active : this.state.currentPage === item })}
                 key={`menu--${index}`}
                 onClick={this.updatePage}
               >

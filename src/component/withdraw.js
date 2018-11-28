@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
 import "./component-styles.scss";
 import { Dropdown } from "./dropdown";
 import {

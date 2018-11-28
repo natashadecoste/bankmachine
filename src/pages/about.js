@@ -1,5 +1,5 @@
 import React from "react";
-
+import cx from "classnames";
 import { AboutIcon, OverviewIcon } from "./../icons/menuicons";
 import {
   Drawer,
@@ -44,16 +44,13 @@ import { createMuiTheme } from "@material-ui/core/styles/createMuiTheme";
 var overview = (
   <p>
     Bankr is a web application that is built to replace your banker.
-    Convienience for all your banking needs should be a first priority. By automating appropriate banking experiences, you can do things on YOUR time and Bankr will do the heavy lifting for you. 
+    Convienience for all your banking needs should be a first priority. By
+    automating appropriate banking experiences, you can do things on YOUR time
+    and Bankr will do the heavy lifting for you.
   </p>
 );
 
-var about = (
-  <p>
-    Bankr makes it possible to do your everyday banking ANYTIME. 
-  </p>
-
-);
+var about = <p>Bankr makes it possible to do your everyday banking ANYTIME.</p>;
 
 var information = [
   {
@@ -67,7 +64,6 @@ var information = [
     information: about
   }
 ];
-
 
 const drawerWidth = 250;
 const styles = theme => ({
@@ -95,7 +91,7 @@ export default class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 0
+      currentPage: "overview"
     };
   }
 
@@ -111,16 +107,25 @@ export default class About extends React.Component {
       y = x.textContent;
     }
 
+    this.setState({
+      currentPage: y
+    });
 
+
+  };
+
+  getIndex = () => {
+    var set = this.state.currentPage;
     var index = information
       .map(function(info) {
         return info.page;
       })
-      .indexOf(y);
-    this.setState({
-      currentPage: index
-    });
-  };
+      .indexOf(set);
+    // this.setState({
+    //   currentPage: index
+    // });
+    return index;
+  }
 
   render() {
     return (
@@ -153,7 +158,9 @@ export default class About extends React.Component {
           <List>
             {information.map((item, index) => (
               <ListItem
-                className="side-bar-item"
+                className={cx("side-bar-item", {
+                  active: this.state.currentPage === item.page
+                })}
                 key={`menu--${index}`}
                 onClick={this.updateInfo}
               >
@@ -165,8 +172,8 @@ export default class About extends React.Component {
           </List>
         </Drawer>
         <main style={styles.content} className="content">
-          <h1>{information[this.state.currentPage].title}</h1>
-          <p>{information[this.state.currentPage].information}</p>
+          <h1>{information[this.getIndex()].title}</h1>
+          <div>{information[this.getIndex()].information}</div>
         </main>
       </div>
     );
