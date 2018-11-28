@@ -61,6 +61,7 @@ export class Deposit extends React.Component {
     return (
       <div className="section-container deposit">
         <h1>Account Deposit</h1>
+        <p>Select an account and amount to deposit.</p>
         <Paper className="bankr-paper">
           <h2>New Deposit</h2>
           <div className="input-group">

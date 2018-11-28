@@ -70,6 +70,7 @@ export class Withdraw extends React.Component {
     return (
       <div className="section-container">
         <h1>Withdraw Money from an Account</h1>
+        <p>Select an account and amount to withdraw.</p>
         <Paper className="bankr-paper">
           <h2>New Withdrawl</h2>
           <div className="input-group">
