@@ -52,12 +52,32 @@ import { createMuiTheme } from "@material-ui/core/styles/createMuiTheme";
 //     },
 //   });
 var overview = (
-  <p>
-    Bankr is a web application that is built to replace your banker.
-    Convienience for all your banking needs should be a first priority. By
-    automating appropriate banking experiences, you can do things on YOUR time
-    and Bankr will do the heavy lifting for you.
-  </p>
+  <div>
+    <p>
+      Bankr is a web application that is built to replace your banker.
+      Convienience for all your banking needs should be a first priority. By
+      automating appropriate banking experiences, you can do things on YOUR time
+      and Bankr will do the heavy lifting for you.
+    </p>
+    <Paper className="bankr-paper implementation">
+      <h2>Implementation</h2>
+      <p>
+        Bankr was built using Git (with Github), Gatsby.js (incl. webpack,
+        browsersync), ReactJS, SCSS and Google Material UI.
+      </p>
+      <p style={{fontSize: "0.7em", marginTop: "1.2em"}}>
+        Gatsby.js gets the project running quickly with a development server and
+        Github facilitates the collaboration effort. ReactJS is being used to
+        manage states (bank accounts) on the front end (on refresh all changes
+        are lost). Pages are build from custome ReactJS components that depend
+        on smaller Material UI components (buttons, input, etc). Building on
+        Material UI helps cut down time of development because their styles
+        closely aligned with Bankr wireframes making them a stellar foundation.
+        Our custom styles for pages, layouts and custom icons are controlled
+        with our custom SCSS sheets.
+      </p>
+    </Paper>
+  </div>
 );
 
 var about = (
@@ -104,7 +124,7 @@ var about = (
         />
       </svg>
       <p>
-        Bankr is built on top of Google's {" "} 
+        Bankr is built on top of Google's{" "}
         <a href="https://material-ui.com">Material UI Library</a>.
       </p>
     </Paper>
