@@ -3,7 +3,13 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import "./component-styles.scss";
 import { Dropdown } from "./dropdown";
-import { MuiThemeProvider, TextField, Button } from "@material-ui/core";
+import {
+  MuiThemeProvider,
+  Button,
+  Input,
+  FormHelperText,
+  InputAdornment
+} from "@material-ui/core";
 import { Chevron } from "../icons/chevron";
 
 export class Deposit extends React.Component {
@@ -12,19 +18,13 @@ export class Deposit extends React.Component {
 
     this.state = {
       selectedAccount: props.accounts[0],
-      selectedCurrency: "CAD"
+      depositAmt: 0
     };
   }
 
   selectItem = item => {
     this.setState({
       selectedAccount: item
-    });
-  };
-
-  selectCurrency = currency => {
-    this.setState({
-      selectedCurrency: currency.name
     });
   };
 
@@ -69,17 +69,18 @@ export class Deposit extends React.Component {
           />
         </div>
         <div className="input-group">
-          How much money to deposit?
-          <TextField
+          <Input
             required
             id="deposit-amt"
-            label="Amount to Deposit"
-            margin="normal"
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+            endAdornment={<InputAdornment position="end">CAD</InputAdornment>}
+            inputProps={{
+              "aria-label": "Deposit Amount"
+            }}
           />
-          <Dropdown
-            select={this.selectCurrency}
-            list={[{ name: "CAD" }, { name: "USD" }, { name: "EUR" }]}
-          />
+          <FormHelperText id="weight-helper-text">
+            Deposit Amount
+          </FormHelperText>
         </div>
         <Button
           variant="contained"
@@ -89,7 +90,7 @@ export class Deposit extends React.Component {
           className="cta"
         >
           Deposit Money
-          <Chevron/>
+          <Chevron />
         </Button>
       </div>
     );

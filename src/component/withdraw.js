@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import "./component-styles.scss";
 import { Dropdown } from "./dropdown";
-import { MuiThemeProvider, Button, TextField } from "@material-ui/core";
+import { MuiThemeProvider, Button, Input, FormHelperText, InputAdornment } from "@material-ui/core";
 import { Chevron } from "../icons/chevron";
 
 export class Withdraw extends React.Component {
@@ -72,13 +72,18 @@ export class Withdraw extends React.Component {
           />
         </div>
         <div className="input-group">
-          <TextField
+        <Input
             required
             id="withdraw-amt"
-            label="Amount to Withdraw"
-            margin="normal"
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+            endAdornment={<InputAdornment position="end">CAD</InputAdornment>}
+            inputProps={{
+              "aria-label": "Withdraw Amount"
+            }}
           />
-          CAD
+          <FormHelperText>
+            Withdraw Amount
+          </FormHelperText>
         </div>
         <Button
           variant="contained"
