@@ -12,6 +12,12 @@ import {
 } from "@material-ui/core/";
 
 export class Summary extends React.Component {
+  componentDidMount = () => {
+    setTimeout(()=>{
+      this.forceUpdate();
+
+    }, 200)
+  }
   render() {
     return (
       <div className="section-container">
