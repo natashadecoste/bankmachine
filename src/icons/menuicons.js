@@ -86,7 +86,6 @@ export const AboutIcon = createReactClass({
   render() {
     return (
       <svg
-        className="menu-icon"
         x="0px"
         y="0px"
         viewBox="0 0 512 512"

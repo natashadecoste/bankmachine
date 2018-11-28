@@ -45,7 +45,7 @@ export class Deposit extends React.Component {
     if (this.checkAmount(amt)) {
       var txt = `Are you sure you want to add ${amt} to your ${
         this.state.selectedAccount.name
-      } account wiht current balance of  ${
+      } account with current balance of  ${
         this.state.selectedAccount.balance
       } in account?`;
       var r = window.confirm(txt);
