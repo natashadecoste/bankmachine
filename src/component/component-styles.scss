@@ -43,6 +43,11 @@ ul.dropdown-list {
     top: 50%;
     transform: translateY(-50%);
     margin: auto 5px;
+    background-color: #4FB562;
+
+    &:hover {
+        background-color:#3e934e;
+    }
 }
 
 .cta .chevron {

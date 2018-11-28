@@ -5,7 +5,7 @@ import "./layouts.scss";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Helmet from "react-helmet";
 import src from "./videos/splashvideo.mp4";
-import { AboutIcon } from "./../icons/menuicons";
+import { IndexAboutIcon } from "./../icons/menuicons";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -59,7 +59,7 @@ export default () => (
         window.open("/about", "_blank");
       }}
     >
-      <AboutIcon />
+      <IndexAboutIcon />
     </div>
     </div>
   </div>
