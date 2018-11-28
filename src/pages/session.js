@@ -79,14 +79,11 @@ export default class Session extends React.Component {
     var tempaccounts = this.state.accounts;
     tempaccounts.forEach(accountItem => {
       if (accountItem.name === sender.name) {
-        //console.log('found sender');
-
         accountItem.balance = Number(accountItem.balance) - Number(amt);
-        //newBalance = accountItem.balance;
       }
       if (accountItem.name === payee.name) {
         accountItem.balance = Number(accountItem.balance) + Number(amt);
-        //console.log("found payee");
+      
       }
     });
 
@@ -209,7 +206,9 @@ export default class Session extends React.Component {
           <List>
             {pages.map((item, index) => (
               <ListItem
-                className={cx("side-bar-item", {active : this.state.currentPage === item })}
+                className={cx("side-bar-item", {
+                  active: this.state.currentPage === item
+                })}
                 key={`menu--${index}`}
                 onClick={this.updatePage}
               >

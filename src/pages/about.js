@@ -121,9 +121,6 @@ export default class About extends React.Component {
         return info.page;
       })
       .indexOf(set);
-    // this.setState({
-    //   currentPage: index
-    // });
     return index;
   }
 
